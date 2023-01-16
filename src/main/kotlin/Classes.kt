@@ -15,7 +15,6 @@ open class P51: Airplane() {
     override var engineState = false
     override val engine = "V12"
     override val weight = 4175
-
     override fun decreaseThrottle() {
         if (throttle != 0.toByte() && engineState) {
             this.throttle = (throttle - 10).toByte()
@@ -35,18 +34,20 @@ open class P51: Airplane() {
 
 //EXTENSION
 class P51D: P51() {
-    var bombs:Byte = 2
+    var bombs: Byte = 2
 
     fun dropBomb(): String {
-        if (bombs > 1) {
+
+        var status = if (bombs > 1) {
             bombs - 1
-            val status = "Bombs dropped"
+            "Bombs dropped"
         } else {
-
+            "No bombs"
         }
+        return status
     }
-
 }
+
 
 //ESPECEFICACION
 interface Engine {
